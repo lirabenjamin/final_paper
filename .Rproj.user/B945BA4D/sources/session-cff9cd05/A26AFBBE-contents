@@ -1,0 +1,153 @@
+install.packages("sand")
+
+library(sand)
+data(karate)
+
+#Matrices 
+# v1 will be yes/no friendship
+v1<-as.matrix(get.adjacency(karate))
+dim(v1)
+fix(v1)
+
+# v2 will be strength of relationship matrix
+v2<-as.matrix(get.adjacency(karate,attr="weight"))
+dim(v2)
+fix(v2)
+
+#v1 can be transformed into number of friends in common matrix
+v1t<-v1%*%t(v1)
+dim(v1t)
+fix(v1t)
+
+#Distance based matrices
+Faction<-as.matrix(dist(V(karate)$Faction, V(karate)$Faction, method = "manhattan", upper = T))
+fix(Faction)
+Faction[Faction==0]<-NA
+Faction[Faction!=0]<-0 #Different faction
+Faction[is.na(Faction)]<-1
+diag(Faction)<-0
+Faction
+
+g<-array(dim=c(3,34,34))#Two matrices and these are 34 by 34
+g
+g[1,,]<-v1t #number of friends in common
+g[2,,]<-v2 #number of event
+#Faction one matrix just to see how it works
+g[3,,]<-Faction #Whether they belong to the same 
+dim(g)
+
+install.packages("sna")
+library(sna)
+
+#Perform qap tests of graph correlation 1 vs 2
+set.seed(47)
+q.12<-qaptest(g,gcor,g1=1,g2=2,reps=10000)
+summary(q.12)
+plot(q.12)
+
+set.seed(47)
+#1 vs 3
+q.13<-qaptest(g,gcor,g1=1,g2=3,reps=5000)
+summary(q.13)
+plot(q.13)
+
+#2 vs 3
+q.23<-qaptest(g,gcor,g1=2,g2=3,reps=5000)
+summary(q.23)
+plot(q.13)
+
+#Fake or placebo test
+q.22<-qaptest(g,gcor,g1=2,g2=2,reps=5000)
+summary(q.22)
+plot(q.22)
+
+g<-array(dim=c(2,34,34))#Two matrices and these are 34 by 34
+g
+g[1,,]<-v1t #number of friends in common
+g[2,,]<-v2 #number of event
+dim(g)
+
+set.seed(47)
+nl<-netlm(Faction,g,reps=1000)
+
+#=============================================================#
+# Multiple regression for network variables: MRQAP
+########Regression techniques
+# We can similarly use permutaton tests for a linear regression
+# on network variables - known as MRQAP (multiple regression QAP)
+
+# Note that the matrices used in the regression can contain different relations, the same
+# relation at different points in time, or even dyadic covariate (attribute) data. For instance, 
+# you can have a matrix of social ties as a DV and a same-gender attribute matrix as an IV.
+# (i.e. a matrix where (i,j)=1 if i and j are both female(male), and 0 if they have different genders)
+library(sna)
+KRADVICE<-read.csv("C:/Users/MSGC/Dropbox/PHUDCFILY SNA/QUAP/KRACKADVICE.csv", head=T)
+KRADFRIEND<-read.csv("C:/Users/MSGC/Dropbox/PHUDCFILY SNA/QUAP/KRACKFRIENDSHIP.csv", head=T)
+KRADREPORTSTO<-read.csv("C:/Users/MSGC/Dropbox/PHUDCFILY SNA/QUAP/KRACKREPORTSTO.csv", head=T)
+
+dim(KRADVICE)
+KRADVICE<-as.matrix(KRADVICE)
+dim(KRADFRIEND)
+KRADFRIEND<-as.matrix(KRADFRIEND)
+dim(KRADREPORTSTO)
+KRADREPORTSTO<-as.matrix(KRADREPORTSTO)
+
+x<-array(dim=c(2,21,21))
+x[1,,]<-KRADFRIEND
+x[2,,]<-KRADREPORTSTO
+
+set.seed(47)
+nl<-netlm(KRADVICE,x,reps=1000)
+#Examine the results
+summary(nl)
+
+#Adding attributes
+
+Attributes<-read.csv("C:/Users/MSGC/Dropbox/PHUDCFILY SNA/QUAP/AttributesHighTech.csv", head=T)
+names(Attributes)
+
+# Is advice favored by similar Age of participants?
+Age<- as.matrix(dist(Attributes$AGE, Attributes$AGE, method = "euclidean", upper = T))
+# Is advice affected by similar Age of participants?
+Tenure<-as.matrix(dist(Attributes$TENURE, Attributes$TENURE, method = "euclidean", upper = T))
+# Is advice affected by similar LEVEL of participants?
+Level<-as.matrix(dist(Attributes$LEVEL, Attributes$LEVEL, method = "euclidean", upper = T))
+Level
+# Level[Level!=0]<-100
+# Level[Level==0]<-1
+# Level[Level==100]<-0
+# diag(Level)<-0
+Level
+# Is advice affected by similar DEPARTMENT of participants?
+Dept<-as.matrix(dist(Attributes$DEPT, Attributes$DEPT, method = "euclidean", upper = T))
+Dept
+Dept[Dept!=0]<-100 #Place holder for people in diff depts 
+Dept[Dept==0]<-1
+Dept[Dept==100]<-0
+diag(Dept)<-0
+Dept
+
+# Adding Attributes
+x<-array(dim=c(5,21,21))
+x[1,,]<-KRADFRIEND
+x[2,,]<-KRADREPORTSTO
+# x[3,,]<-Age
+x[3,,]<-Tenure
+x[4,,]<-Level
+x[5,,]<-Dept
+# x[7,,]<-as.matrix(dist(c$X..of.total.degrees.bachelors, c$X..of.total.degrees.bachelors, method = "euclidean"))
+# x[8,,]<-as.matrix(dist(c$Student.Services, c$Student.Services, method = "euclidean"))
+# x[9,,]<-as.matrix(dist(c$PCTWhite, c$PCTWhite, method = "euclidean"))
+
+set.seed(47)
+nl<-netlm(KRADVICE,x,reps=1000)
+#Examine the results
+summary(nl)
+
+Dept[Dept!=0]<-100
+Dept[Dept==0]<-1
+Dept[Dept==100]<-0
+diag(Dept)<-0
+Dept
+
+

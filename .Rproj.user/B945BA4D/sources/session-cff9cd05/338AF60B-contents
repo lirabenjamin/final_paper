@@ -1,0 +1,52 @@
+---
+title: "Final Project"
+format: html
+editor: visual
+bibliography: references.bib
+---
+
+# Abstract
+
+Reference bias refers to a bias in questionnaire response in which people self-report different answers depending on who they are comparing against. This is a proposed investigation to apply network and spatial analyses to a longitudinal sample of adolescents who completed questionnaires on academic self-control. One thousand and one hundred students completed questionnaires, and also nominated who their close friends were and who they thought exemplified self-control (henceforth referred to as exemplars). We show network descriptives and centrality measures, test for social autocorrelation as a function of time, and for the correlation between the friendship and the exemplar network over time.
+
+# Introduction
+
+People use different implicit reference points to judge their behavior when responding to questionnaire items---a systematic error known as reference bias [@lira2022]. Take John and Mary, for example, who both see the same questionnaire item asking them whether or not they usually come to class prepared. To answer such a question, they must remember when they came prepared or unprepared to class; arrow leading from own trait behavior to own trait self-report), and integrate them into a summary judgment by comparing that against their reference points for preparedness (arrow leading from reference points to own trait self-report). John has lower reference points for preparedness, and therefore thinks that bringing a notebook and a pen counts as being prepared. Mary, on the other hand, has higher reference points for preparedness, and thinks that she is *unprepared* unless she has completed homework, studied the assigned readings, and reviewed last class's material. The higher the reference point, the lower the individual will report preparedness (indicated by the negative sign). Thus, even if John and Mary usually *behave* in the same way, they will judge that same behavior differently, resulting in divergent responses.These diverse reference points might be influenced by the characteristics of the peers surrounding John and Mary. Likely, Mary thinks about preparedness this way because she is surrounded by other people who tend to prepare more than the people John is surrounded by (arrows leading from role model trait behavior and friend trait behavior to reference points), as would be suggested by research on peer descriptive norms [@cialdini2007].
+
+```{r}
+knitr::include_graphics("Theoretical Model.pdf")
+```
+
+Why reference bias matters? Questionnaires are, by far, the most widely used method for gathering data in the social sciences and in policymaking. Especially in educational contexts there is growing interest in measuring, evaluating, and hopefully improving the effectiveness of schools at developing self-regulation in their students. Some school districts have implemented
+
+Why we don't know enough about who the referent is in reference bias?
+
+# Methods
+
+We will use Moran's I, and others.
+
+# Data
+
+# Significance
+
+Final paper guidelines (Between 750 and 1,500 words)
+
+1\. Study objectives or purpose
+
+• Introduction, description of the problem, motivation
+
+2\. Study methods or modes of inquiry
+
+3\. Proposed Data sources or evidence, data collection, participants
+
+4\. Study significance
+
+• Importance of the topic
+
+• The originality of the work
+
+• The quality of theoretical or conceptual frameworks and data sources
+
+• Soundness of the research design, analysis, and/or interpretation
+
+• Evidence that the paper can be completed

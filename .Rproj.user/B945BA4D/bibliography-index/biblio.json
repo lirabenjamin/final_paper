@@ -1,0 +1,544 @@
+{
+    "sources": [
+        {
+            "author": [
+                {
+                    "family": "Lira",
+                    "given": "Benjamin"
+                },
+                {
+                    "family": "O’Brien",
+                    "given": "Joseph"
+                },
+                {
+                    "family": "Peña",
+                    "given": "Pablo"
+                },
+                {
+                    "family": "Galla",
+                    "given": "Brian M."
+                },
+                {
+                    "family": "D’Mello",
+                    "given": "Sidney"
+                },
+                {
+                    "family": "Yeager",
+                    "given": "David S."
+                },
+                {
+                    "family": "Defnet",
+                    "given": "Amy"
+                },
+                {
+                    "family": "Kautz",
+                    "given": "Tim"
+                },
+                {
+                    "family": "Munkacsy",
+                    "given": "Kate"
+                },
+                {
+                    "family": "Duckworth",
+                    "given": "Angela L."
+                }
+            ],
+            "container-title": "Under Review",
+            "id": "lira2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "Large studies reveal how reference bias limits policy applications of self-report measures",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1007/s11336-006-1560-6",
+            "URL": "http://link.springer.com/10.1007/s11336-006-1560-6",
+            "author": [
+                {
+                    "family": "Cialdini",
+                    "given": "Robert B."
+                }
+            ],
+            "container-title": "Psychometrika",
+            "id": "cialdini2007",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2007,
+                        6
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "263-268",
+            "title": "Descriptive social norms as underappreciated sources of social control",
+            "type": "article-journal",
+            "volume": "72"
+        },
+        {
+            "DOI": "10.1073/pnas.1010076108",
+            "URL": "http://www.pnas.org/cgi/doi/10.1073/pnas.1010076108",
+            "author": [
+                {
+                    "family": "Moffitt",
+                    "given": "T. E."
+                },
+                {
+                    "family": "Arseneault",
+                    "given": "L."
+                },
+                {
+                    "family": "Belsky",
+                    "given": "D."
+                },
+                {
+                    "family": "Dickson",
+                    "given": "N."
+                },
+                {
+                    "family": "Hancox",
+                    "given": "R. J."
+                },
+                {
+                    "family": "Harrington",
+                    "given": "H."
+                },
+                {
+                    "family": "Houts",
+                    "given": "R."
+                },
+                {
+                    "family": "Poulton",
+                    "given": "R."
+                },
+                {
+                    "family": "Roberts",
+                    "given": "B. W."
+                },
+                {
+                    "family": "Ross",
+                    "given": "S."
+                },
+                {
+                    "family": "Sears",
+                    "given": "M. R."
+                },
+                {
+                    "family": "Thomson",
+                    "given": "W. M."
+                },
+                {
+                    "family": "Caspi",
+                    "given": "A."
+                }
+            ],
+            "container-title": "Proceedings of the National Academy of Sciences",
+            "id": "moffitt2011",
+            "issue": "7",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011,
+                        2,
+                        15
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "2693-2698",
+            "title": "A gradient of childhood self-control predicts health, wealth, and public safety",
+            "type": "article-journal",
+            "volume": "108"
+        },
+        {
+            "DOI": "10.1016/B978-0-444-53444-6.00001-8",
+            "URL": "https://linkinghub.elsevier.com/retrieve/pii/B9780444534446000018",
+            "author": [
+                {
+                    "family": "Almlund",
+                    "given": "Mathilde"
+                },
+                {
+                    "family": "Duckworth",
+                    "given": "Angela Lee"
+                },
+                {
+                    "family": "Heckman",
+                    "given": "James"
+                },
+                {
+                    "family": "Kautz",
+                    "given": "Tim"
+                }
+            ],
+            "id": "almlund2011",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "language": "en",
+            "note": "DOI: 10.1016/B978-0-444-53444-6.00001-8",
+            "page": "1-181",
+            "publisher": "Elsevier",
+            "title": "Personality Psychology and Economics",
+            "type": "chapter",
+            "volume": "4"
+        },
+        {
+            "DOI": "10.1787/92a11084-en",
+            "URL": "https://www.oecd-ilibrary.org/education/beyond-academic-learning_92a11084-en",
+            "author": [
+                {
+                    "family": "OECD"
+                }
+            ],
+            "id": "oecd2021",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        9,
+                        7
+                    ]
+                ]
+            },
+            "language": "en",
+            "note": "DOI: 10.1787/92a11084-en",
+            "publisher": "OECD",
+            "publisher-place": "Paris",
+            "title": "Beyond Academic Learning: First Results from the Survey of Social and Emotional Skills",
+            "title-short": "Beyond Academic Learning",
+            "type": "book"
+        },
+        {
+            "DOI": "10.3102/0162373715597298",
+            "URL": "http://journals.sagepub.com/doi/10.3102/0162373715597298",
+            "author": [
+                {
+                    "family": "West",
+                    "given": "Martin R."
+                },
+                {
+                    "family": "Kraft",
+                    "given": "Matthew A."
+                },
+                {
+                    "family": "Finn",
+                    "given": "Amy S."
+                },
+                {
+                    "family": "Martin",
+                    "given": "Rebecca E."
+                },
+                {
+                    "family": "Duckworth",
+                    "given": "Angela L."
+                },
+                {
+                    "family": "Gabrieli",
+                    "given": "Christopher F. O."
+                },
+                {
+                    "family": "Gabrieli",
+                    "given": "John D. E."
+                }
+            ],
+            "container-title": "Educational Evaluation and Policy Analysis",
+            "id": "west2016",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016,
+                        3
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "148-170",
+            "title": "Promise and paradox: Measuring students’ non-cognitive skills and the impact of schooling",
+            "title-short": "Promise and paradox",
+            "type": "article-journal",
+            "volume": "38"
+        },
+        {
+            "DOI": "10.1257/app.5.4.28",
+            "URL": "https://pubs.aeaweb.org/doi/10.1257/app.5.4.28",
+            "author": [
+                {
+                    "family": "Dobbie",
+                    "given": "Will"
+                },
+                {
+                    "family": "Fryer",
+                    "given": "Roland G"
+                }
+            ],
+            "container-title": "American Economic Journal: Applied Economics",
+            "id": "dobbie2013",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013,
+                        10,
+                        1
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "28-60",
+            "title": "Getting Beneath the Veil of Effective Schools: Evidence From New York City",
+            "title-short": "Getting Beneath the Veil of Effective Schools",
+            "type": "article-journal",
+            "volume": "5"
+        },
+        {
+            "DOI": "10.1002/per.840",
+            "URL": "http://journals.sagepub.com/doi/10.1002/per.840",
+            "author": [
+                {
+                    "family": "Mõttus",
+                    "given": "René"
+                },
+                {
+                    "family": "Allik",
+                    "given": "Jüri"
+                },
+                {
+                    "family": "Realo",
+                    "given": "Anu"
+                },
+                {
+                    "family": "Pullmann",
+                    "given": "Helle"
+                },
+                {
+                    "family": "Rossier",
+                    "given": "Jérôme"
+                },
+                {
+                    "family": "Zecca",
+                    "given": "Gregory"
+                },
+                {
+                    "family": "AhKion",
+                    "given": "Jennifer"
+                },
+                {
+                    "family": "AmoussouYéyé",
+                    "given": "Dénis"
+                },
+                {
+                    "family": "Bäckström",
+                    "given": "Martin"
+                },
+                {
+                    "family": "Barkauskiene",
+                    "given": "Rasa"
+                },
+                {
+                    "family": "Barry",
+                    "given": "Oumar"
+                },
+                {
+                    "family": "Bhowon",
+                    "given": "Uma"
+                },
+                {
+                    "family": "Björklund",
+                    "given": "Fredrik"
+                },
+                {
+                    "family": "Bochaver",
+                    "given": "Aleksandra"
+                },
+                {
+                    "family": "Bochaver",
+                    "given": "Konstantin"
+                },
+                {
+                    "dropping-particle": "de",
+                    "family": "Bruin",
+                    "given": "Gideon P."
+                },
+                {
+                    "family": "Cabrera",
+                    "given": "Helena F."
+                },
+                {
+                    "family": "Chen",
+                    "given": "Sylvia Xiaohua"
+                },
+                {
+                    "family": "Church",
+                    "given": "A. Timothy"
+                },
+                {
+                    "family": "Cissé",
+                    "given": "Daouda Dougoumalé"
+                },
+                {
+                    "family": "Dahourou",
+                    "given": "Donatien"
+                },
+                {
+                    "family": "Feng",
+                    "given": "Xiaohang"
+                },
+                {
+                    "family": "Guan",
+                    "given": "Yanjun"
+                },
+                {
+                    "family": "Hwang",
+                    "given": "HyiSung"
+                },
+                {
+                    "family": "Idris",
+                    "given": "Fazilah"
+                },
+                {
+                    "family": "Katigbak",
+                    "given": "Marcia S."
+                },
+                {
+                    "family": "Kuppens",
+                    "given": "Peter"
+                },
+                {
+                    "family": "Kwiatkowska",
+                    "given": "Anna"
+                },
+                {
+                    "family": "Laurinavicius",
+                    "given": "Alfredas"
+                },
+                {
+                    "family": "Mastor",
+                    "given": "Khairul Anwar"
+                },
+                {
+                    "family": "Matsumoto",
+                    "given": "David"
+                },
+                {
+                    "family": "Riemann",
+                    "given": "Rainer"
+                },
+                {
+                    "family": "Schug",
+                    "given": "Joanna"
+                },
+                {
+                    "family": "Simpson",
+                    "given": "Brian"
+                },
+                {
+                    "family": "Ng Tseung",
+                    "given": "Caroline"
+                }
+            ],
+            "container-title": "European Journal of Personality",
+            "id": "mõttus2012",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2012,
+                        5
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "303-317",
+            "title": "Comparability of SelfReported Conscientiousness across 21 Countries",
+            "type": "article-journal",
+            "volume": "26"
+        },
+        {
+            "DOI": "10.1037/0022-3514.82.6.903",
+            "URL": "http://doi.apa.org/getdoi.cfm?doi=10.1037/0022-3514.82.6.903",
+            "author": [
+                {
+                    "family": "Heine",
+                    "given": "Steven J."
+                },
+                {
+                    "family": "Lehman",
+                    "given": "Darrin R."
+                },
+                {
+                    "family": "Peng",
+                    "given": "Kaiping"
+                },
+                {
+                    "family": "Greenholtz",
+                    "given": "Joe"
+                }
+            ],
+            "container-title": "Journal of Personality and Social Psychology",
+            "id": "heine2002",
+            "issue": "6",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002,
+                        6
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "903-918",
+            "title": "What’s wrong with cross-cultural comparisons of subjective Likert scales?: The reference-group effect.",
+            "title-short": "What’s wrong with cross-cultural comparisons of subjective Likert scales?",
+            "type": "article-journal",
+            "volume": "82"
+        },
+        {
+            "DOI": "10.1111/j.1467-9280.2008.02085.x",
+            "URL": "http://journals.sagepub.com/doi/10.1111/j.1467-9280.2008.02085.x",
+            "author": [
+                {
+                    "family": "Heine",
+                    "given": "Steven J."
+                },
+                {
+                    "family": "Buchtel",
+                    "given": "Emma E."
+                },
+                {
+                    "family": "Norenzayan",
+                    "given": "Ara"
+                }
+            ],
+            "container-title": "Psychological Science",
+            "id": "heine2008",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2008,
+                        4
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "309-313",
+            "title": "What do cross-national comparisons of personality traits tell us?: The case of conscientiousness",
+            "title-short": "What do cross-national comparisons of personality traits tell us?",
+            "type": "article-journal",
+            "volume": "19"
+        }
+    ],
+    "project_biblios": []
+}

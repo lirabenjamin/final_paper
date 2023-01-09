@@ -1,0 +1,44 @@
+---
+title: "Final Project"
+format: html
+editor: visual
+bibliography: references.bib
+---
+
+# Abstract
+
+Reference bias refers to a bias in questionnaire response in which people self-report different answers depending on who they are comparing against. This is a proposed investigation to apply network and spatial analyses to a longitudinal sample of adolescents who completed questionnaires on academic self-control. One thousand and one hundred students completed questionnaires, and also nominated who their close friends were and who they thought exemplified self-control (henceforth referred to as exemplars). We show network descriptives and centrality measures, test for social autocorrelation as a function of time, and for the correlation between the friendship and the exemplar network over time.
+
+# Introduction
+
+People use different implicit reference points to judge their behavior when responding to questionnaire items---a systematic error known as reference bias [@lira2022]. Take John and Mary, for example, who both see the same questionnaire item asking them whether or not they usually come to class prepared. To answer such a question, they must remember when they came prepared or unprepared to class; arrow leading from own trait behavior to own trait self-report), and integrate them into a summary judgment by comparing that against their reference points for preparedness (arrow leading from reference points to own trait self-report). John has lower reference points for preparedness, and therefore thinks that bringing a notebook and a pen counts as being prepared. Mary, on the other hand, has higher reference points for preparedness, and thinks that she is *unprepared* unless she has completed homework, studied the assigned readings, and reviewed last class's material. The higher the reference point, the lower the individual will report preparedness (indicated by the negative sign). Thus, even if John and Mary usually *behave* in the same way, they will judge that same behavior differently, resulting in divergent responses.These diverse reference points might be influenced by the characteristics of the peers surrounding John and Mary. Likely, Mary thinks about preparedness this way because she is surrounded by other people who tend to prepare more than the people John is surrounded by (arrows leading from role model trait behavior and friend trait behavior to reference points), as would be suggested by research on peer descriptive norms [@cialdini2007].
+
+```{r}
+knitr::include_graphics("Theoretical Model.pdf")
+```
+
+Why reference bias matters? Questionnaires are, by far, the most widely used method for gathering data in the social sciences and in policymaking. Especially in educational contexts there is growing interest in measuring, evaluating, and hopefully improving the effectiveness of schools at developing self-regulation in their students. Some school districts have already started implementing questionnaire measures of self-regulation in an attempt to try to improve it. The intention is not misguided: there is ample evidence that self-regulation predicts an array of positive life outcomes [@moffitt2011; @almlund2011]. However, if students refer to different standards, comparisons between schools could be biased because in essence students are not answering the same questions. Thus, there is worry about "whether we can make \[self-regulation skills\] visible, comparable, and therefore amenable to deliberate policy action in a similar way that traditional tests do with academic knowledge and skills" [@oecd2021].
+
+There is little known about reference bias. Most research comes from evaluations of charter schools that show paradoxical effects: they do not raise self-regulation self-reports, but their students are more likely to attend school, graduate, less likely to become pregnant or incarcerated, among other positive indicators [@west2016; @dobbie2013]. This has been interpreted as schools raising self-regulation (as per the objective outcomes), but differences in school norms and culture resulting in incomparable self-report measurment (i.e., reference bias). Other research relies in cross cultural comparisons, where japanese people tend to rate themselves low in conscientiousness [@mõttus2012], despite cultural experts agreeing in japanese cultural conscientiousness [@heine2002], and objective proxies for conscientiousness affirming this too [@heine2008].
+
+We recently directly identified reference bias by capitalizing on peer variation within a school, and thus obviating concerns about charter schools being ineffective, or cross cultural research being biased by invalid proxies or faulty perceptions of cultural judges [@lira2022]. We defined peers as students in the same school across different cohorts, or students sharing core classes. However, with the data we had we weren't able to more specifically ask the question of "Who is the referent in reference bias"? Do standards come from friends, perceptions of exemplarity, polularity, etc.
+
+# Methods
+
+For this project we will (1) show network descriptives and centrality measures, (2) test for social autocorrelation as a function of time, and (3) for the correlation between the friendship and the exemplar network over time.
+
+## Descriptive and centrality
+
+We will plot networks for friendships and exemplars and identify key actors.
+
+## Social autocorrelation across time
+
+We will compute Moran's I to test for social autocorrelation (outcome dependence) across each time point in the data.
+
+## Network correlation
+
+We have two kinds of peer nomination prompts. We will use QAP to test the correlation in this nomination patterns across time.
+
+# Data
+
+# Significance
