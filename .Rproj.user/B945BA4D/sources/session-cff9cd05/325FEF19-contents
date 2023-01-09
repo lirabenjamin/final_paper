@@ -58,6 +58,7 @@ In the first wave of data collection, students nominated two classmates as frien
 We will compute centrality measures collapsing across time and nomination prompts.
 
 ```{r}
+#| warning: false
 library(tidyverse)
 library(igraph)
 
