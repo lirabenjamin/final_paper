@@ -101,6 +101,7 @@ centrality |>
 Now lets plot the networks across time. Change the Time, peer nomination, and variable accordingly to test different combinations.
 
 ```{r}
+#| warning: false
 # Function to translate igraph to networkD3
 d3_igraph <-
   function(graph, gpa, selfcont) {
