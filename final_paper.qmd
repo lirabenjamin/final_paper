@@ -91,6 +91,7 @@ g <- add_centrality_to_graph(centrality, g)
 Let's plot centrality distributions
 
 ```{r}
+#| warning: false
 centrality |> 
   pivot_longer(closeness:degree, names_to = "metric") |> 
   ggplot(aes(value))+
