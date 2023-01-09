@@ -3,7 +3,7 @@
     "path": "~/Desktop/Final Project/final_paper.qmd",
     "project_path": "final_paper.qmd",
     "type": "quarto_markdown",
-    "hash": "577469043",
+    "hash": "321994586",
     "contents": "",
     "dirty": true,
     "created": 1673274292312.0,
@@ -16,16 +16,17 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "7296:2128.63623046875",
-        "cursorPosition": "57,0",
-        "scrollLine": "15"
+        "rmdVisualModeLocation": "10604:3997.727294921875",
+        "cursorPosition": "169,0",
+        "scrollLine": "15",
+        "chunk_output_type": "console"
     },
     "folds": "",
-    "lastKnownWriteTime": 1673275472,
+    "lastKnownWriteTime": 1673280953,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1673275761835,
+    "last_content_update": 1673281007992,
     "read_only": false,
     "read_only_alternatives": []
 }

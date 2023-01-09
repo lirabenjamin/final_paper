@@ -3,6 +3,8 @@ title: "Final Project"
 format: html
 editor: visual
 bibliography: references.bib
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Abstract
@@ -57,9 +59,114 @@ We will compute centrality measures collapsing across time and nomination prompt
 
 ```{r}
 library(tidyverse)
+library(igraph)
+
 g <- read_rds("data/graph.rds")
+clean <- read_rds("Data/clean.l.rds")
 
+get_centrality = function(graph, normalized = F, degree_mode = "in"){
+  centrality <- tibble(
+  name = V(graph)$name,
+  closeness = closeness(graph,normalized = normalized),
+  betweenness = betweenness(graph,normalized = normalized),
+  eigenvector = eigen_centrality(graph,scale = normalized)$vector,
+  degree = degree(graph,normalized = normalized, mode = degree_mode))
+  return(centrality)
+}
 
+add_centrality_to_graph = function(centrality, graph){
+  V(graph)$eigenvector <- centrality$eigenvector
+  V(graph)$degree <- centrality$degree
+  V(graph)$betweenness <- centrality$betweenness
+  V(graph)$closeness <- centrality$closeness
+  return(graph)
+}
+
+centrality = get_centrality(g)
+
+g <- add_centrality_to_graph(centrality, g)
 ```
 
-# Significance
+Let's plot centrality distributions
+
+```{r}
+centrality |> 
+  pivot_longer(closeness:degree, names_to = "metric") |> 
+  ggplot(aes(value))+
+  geom_histogram()+
+  facet_grid(~metric, scales = "free")
+```
+
+Now lets plot the networks across time. Change the Time, peer nomination, and variable accordingly to test different combinations.
+
+```{r}
+# Function to translate igraph to networkD3
+d3_igraph <-
+  function(graph, gpa, selfcont) {
+    V(graph)$label <- V(graph)$name
+    V(graph)$name <- 1:length(V(graph))
+    
+    edgelist <-
+      graph |> get.edgelist() |> 
+      as.data.frame() |> as_tibble() |> mutate_all(as.integer) |> 
+      mutate_all(function(x) {
+        x - 1
+      })
+    
+    nodes <- tibble(
+      id = (get.vertex.attribute(graph, "name") |> as.integer()) - 1,
+      label = get.vertex.attribute(graph, "label"),
+      group = "1",
+      gpa = get.vertex.attribute(graph, gpa),
+      selfcont = get.vertex.attribute(graph, selfcont)
+    ) |> 
+      mutate(label = glue::glue("{label}\nGPA:{gpa |> round(2)}"))
+    return(list(edgelist = edgelist, nodes = nodes))
+  }
+
+filter_graph <- function(graph = g,
+                         type = "bf",
+                         time = "T1") {
+  time_ids <- which(E(graph)$time == time)
+  g_r <- subgraph.edges(g, time_ids, delete.vertices = FALSE)
+  type_ids <- which(E(g_r)$pn == type)
+  g_r <- subgraph.edges(g_r, type_ids, delete.vertices = FALSE)
+  return(g_r)
+}
+
+d3 <-
+  d3_igraph(g |> filter_graph(type = "bf", time = 'T1'),
+            gpa = "coregpa_T1",
+            selfcont = "scw_s_T1")
+
+networkD3::forceNetwork(
+  Links = d3$edgelist,
+  Nodes = d3$nodes,
+  Source = "V1",
+  Target = "V2",
+  NodeID = "label",
+  Group = "gpa",
+  zoom = T,
+  # colourScale = JS("d3.scaleLinear(d3.schemeCategory10);")
+)
+```
+
+## Social autocorrelation
+
+See `moran_i.r` script.
+
+Results show a downward trend through time such that the outcome dependence of role models and friends decreases through time for self-reported (`scw_s`) and teacher rated (`avg_scw_tr`) self-control as with GPA (`coregpa`).
+
+See results in the plot below
+
+```{r}
+knitr::include_graphics("figures/moran_i.png")
+```
+
+## Correlation between graphs (QAP)
+
+See below that in some cases, students nominated the same person as a role model and a friend. What is the correlation between these two networks over time? We used QAP procedures to test this correlations and get estimates of the uncertainty of them. See the `correlation_nets.r` script.
+
+```{r}
+knitr::include_graphics("figures/correl")
+```

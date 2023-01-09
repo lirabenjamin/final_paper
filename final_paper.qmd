@@ -3,6 +3,8 @@ title: "Final Project"
 format: html
 editor: visual
 bibliography: references.bib
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Abstract
@@ -21,7 +23,7 @@ Why reference bias matters? Questionnaires are, by far, the most widely used met
 
 There is little known about reference bias. Most research comes from evaluations of charter schools that show paradoxical effects: they do not raise self-regulation self-reports, but their students are more likely to attend school, graduate, less likely to become pregnant or incarcerated, among other positive indicators [@west2016; @dobbie2013]. This has been interpreted as schools raising self-regulation (as per the objective outcomes), but differences in school norms and culture resulting in incomparable self-report measurment (i.e., reference bias). Other research relies in cross cultural comparisons, where japanese people tend to rate themselves low in conscientiousness [@mõttus2012], despite cultural experts agreeing in japanese cultural conscientiousness [@heine2002], and objective proxies for conscientiousness affirming this too [@heine2008].
 
-We recently directly identified reference bias by capitalizing on peer variation within a school, and thus obviating concerns about charter schools being ineffective, or cross cultural research being biased by invalid proxies or faulty perceptions of cultural judges [@lira2022]. We defined peers as students in the same school across different cohorts, or students sharing core classes. However, with the data we had we weren't able to more specifically ask the question of "Who is the referent in reference bias"? Do standards come from friends, perceptions of exemplarity, polularity, etc.
+We recently directly identified reference bias by capitalizing on peer variation within a school, and thus obviating concerns about charter schools being ineffective, or cross cultural research being biased by invalid proxies or faulty perceptions of cultural judges [@lira2022]. We defined peers as students in the same school across different cohorts, or students sharing core classes. However, with the data we had we weren't able to more specifically ask the question of "Who is the referent in reference bias"? Do standards come from friends, perceptions of exemplarity, popularity, etc.
 
 # Methods
 
@@ -41,4 +43,126 @@ We have two kinds of peer nomination prompts. We will use QAP to test the correl
 
 # Data
 
-# Significance
+Data for this comes from the CDAP study (Character Development in Adolescence). It includes data from N = 1,071 (47.8% female, 50.9% male, 1.3% unreported; $M_{age}$ = 15.6; $SD_{age}$ = 13.7) students attending two public high schools in the United States who completed surveys from November 2014 to June 2016. According to school records, the race/ethnicity of our sample was: Black (49.0%), White (29.6%), Asian (14.0%), Hispanic/Latinx (4.3%), and other (3.2%). More than half (60.4%) of students were eligible for free and reduced-price meals.
+
+Students completed virtual surveys in their school's computer laboratory and were supervised by their regular teachers. Waves of data collection were scheduled about a month before the end of each semester, and each one took around 45 minutes, scheduled during a single class period.
+
+Students completed the Domain-Specific Impulsivity Scale \\parencite{tsukayama_domain-specific_2013}, which includes items assessing self-control (e.g., "I came to class prepared.") using a 5-point Likert-type scale ranging from 1 = *Never* to 5 = *Always*. In each wave of data collection, the observed reliability ranged from $\alpha$ = .74 to .76.
+
+In the first wave of data collection, students nominated two classmates as friends and two classmates as self-control role models. In subsequent waves, students nominated two classmates as friends and one classmate as an self-control role model.
+
+# Some results
+
+## Network descriptive and centrality
+
+We will compute centrality measures collapsing across time and nomination prompts.
+
+```{r}
+library(tidyverse)
+library(igraph)
+
+g <- read_rds("data/graph.rds")
+clean <- read_rds("Data/clean.l.rds")
+
+get_centrality = function(graph, normalized = F, degree_mode = "in"){
+  centrality <- tibble(
+  name = V(graph)$name,
+  closeness = closeness(graph,normalized = normalized),
+  betweenness = betweenness(graph,normalized = normalized),
+  eigenvector = eigen_centrality(graph,scale = normalized)$vector,
+  degree = degree(graph,normalized = normalized, mode = degree_mode))
+  return(centrality)
+}
+
+add_centrality_to_graph = function(centrality, graph){
+  V(graph)$eigenvector <- centrality$eigenvector
+  V(graph)$degree <- centrality$degree
+  V(graph)$betweenness <- centrality$betweenness
+  V(graph)$closeness <- centrality$closeness
+  return(graph)
+}
+
+centrality = get_centrality(g)
+
+g <- add_centrality_to_graph(centrality, g)
+```
+
+Let's plot centrality distributions
+
+```{r}
+centrality |> 
+  pivot_longer(closeness:degree, names_to = "metric") |> 
+  ggplot(aes(value))+
+  geom_histogram()+
+  facet_grid(~metric, scales = "free")
+```
+
+Now lets plot the networks across time. Change the Time, peer nomination, and variable accordingly to test different combinations.
+
+```{r}
+# Function to translate igraph to networkD3
+d3_igraph <-
+  function(graph, gpa, selfcont) {
+    V(graph)$label <- V(graph)$name
+    V(graph)$name <- 1:length(V(graph))
+    
+    edgelist <-
+      graph |> get.edgelist() |> 
+      as.data.frame() |> as_tibble() |> mutate_all(as.integer) |> 
+      mutate_all(function(x) {
+        x - 1
+      })
+    
+    nodes <- tibble(
+      id = (get.vertex.attribute(graph, "name") |> as.integer()) - 1,
+      label = get.vertex.attribute(graph, "label"),
+      group = "1",
+      gpa = get.vertex.attribute(graph, gpa),
+      selfcont = get.vertex.attribute(graph, selfcont)
+    ) |> 
+      mutate(label = glue::glue("{label}\nGPA:{gpa |> round(2)}"))
+    return(list(edgelist = edgelist, nodes = nodes))
+  }
+
+filter_graph <- function(graph = g,
+                         type = "bf",
+                         time = "T1") {
+  time_ids <- which(E(graph)$time == time)
+  g_r <- subgraph.edges(g, time_ids, delete.vertices = FALSE)
+  type_ids <- which(E(g_r)$pn == type)
+  g_r <- subgraph.edges(g_r, type_ids, delete.vertices = FALSE)
+  return(g_r)
+}
+
+d3 <-
+  d3_igraph(g |> filter_graph(type = "bf", time = 'T1'),
+            gpa = "coregpa_T1",
+            selfcont = "scw_s_T1")
+
+networkD3::forceNetwork(
+  Links = d3$edgelist,
+  Nodes = d3$nodes,
+  Source = "V1",
+  Target = "V2",
+  NodeID = "label",
+  Group = "gpa",
+  zoom = T,
+  # colourScale = JS("d3.scaleLinear(d3.schemeCategory10);")
+)
+```
+
+## Social autocorrelation
+
+See `moran_i.r` script.
+
+Results show a downward trend through time such that the outcome dependence of role models and friends decreases through time for self-reported (`scw_s`) and teacher rated (`avg_scw_tr`) self-control as with GPA (`coregpa`).
+
+See results in the plot below
+
+```{r}
+knitr::include_graphics("figures/moran_i.png")
+```
+
+## Correlation between graphs (QAP)
+
+See below that in some cases, students nominated the same person as a role model and a friend. What is the correlation between these two networks over time? We used QAP procedures to test this correlations and get estimates of the uncertainty of them. See the `correlation_nets.r` script.
