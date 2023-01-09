@@ -72,13 +72,24 @@ cortest <-
 
 # Plot distributions
 cortest %>% 
+  mutate(name = glue::glue("{value} correlation = {Ben::numformat(testval, 2)}, p < .001")) |> 
   unnest(dist) %>%
   ggplot(aes(dist))+
   geom_histogram(bins = 100) +
   geom_vline(aes(xintercept= testval), col = "red") +
   facet_wrap(~name, scales = "free") +
   labs(title = "Distribution of correlation values")
-ggsave("figures/correlation distributions.pdf", width = 10, height = 10)
+ggsave("figures/correlation distributions.png", width = 6, height = 4)
+
+
+cortest |> 
+  ggplot(aes(value, testval))+
+  geom_point()+
+  geom_line(group = 1)+
+  geom_text(aes(label = Ben::numformat(testval)),vjust= -.8)+
+  labs(x = "Time", y = "Correlation between friendship and exemplar networks",
+       caption = "All correlations are significant beyond the .001 level")
+ggsave("figures/correlation_line.png", width = 6, height = 4)
 
 # Percentile test
 cortest %>%

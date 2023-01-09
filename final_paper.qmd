@@ -165,4 +165,18 @@ knitr::include_graphics("figures/moran_i.png")
 
 ## Correlation between graphs (QAP)
 
-See below that in some cases, students nominated the same person as a role model and a friend. What is the correlation between these two networks over time? We used QAP procedures to test this correlations and get estimates of the uncertainty of them. See the `correlation_nets.r` script.
+See below that in some cases, students nominated the same person as a role model and a friend. What is the correlation between these two networks over time? We used QAP procedures to test this correlations and get estimates of the uncertainty of them. See the `correlation_nets.r` script. As shown in the plots below, the trend is also towards decline, such that exemplars and friends overlap less as time goes by.
+
+### Correlations across time
+
+```{r}
+knitr::include_graphics("figures/correlation_line.png")
+```
+
+### Significance testing
+
+```{r}
+knitr::include_graphics("figures/correlation distributions.png")
+```
+
+# References
